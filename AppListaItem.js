@@ -5,9 +5,39 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
+import Database from './Database';
 
-export default function AppListaItem() {
+async function handleEditarPress() {
+  const item = await Database.getItem(props.id); 
+  props.navigation.navigate(item);
+}
+
+function handleDeletePress() {
+  Alert.alert(
+    'Atenção',
+    'Você deseja, realmente, excluir essa informação?',
+    [
+      {
+        text: 'Não',
+        onPress: () => console.log('Cancelado'),
+        style: 'cancel',
+      },
+      {
+        text: 'Sim',
+        onPress: () => {
+          Database.deleteItem(props.id).then((response) =>
+            props.navigation.navigate('AppLista', { id: props.id })
+          );
+        },
+      },
+    ],
+    { cancelable: false }
+  );
+}
+
+export default function AppListaItem(props) {
   return (
     <View style={styles.container}>
       <View style={styles.containerbotao}>
