@@ -1,23 +1,16 @@
-//import * as React from 'react'; //Importação do React
+
 import React, {useState} from 'react';
-import { StatusBar } from 'expo-status-bar'; //importação do componente gráfico Barra de Menu
+import { StatusBar } from 'expo-status-bar'; 
 import {
   Text,
   View,
   StyleSheet,
   TextInput,
   TouchableOpacity
-} from 'react-native'; //Importação dos elementos de caixa de texto, View, Caixa de entrada e botão e CSS
-//O useState é um importação para trabalhar com mudanças de estado dos componentes gráficos.
+} from 'react-native'; 
 import Constants from 'expo-constants';
 
-// You can import from local files
-//import AssetExample from './components/AssetExample';
-
-// or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
-
-//handle é uma manipulador para que eu possa acessar as informações e modifica-las da forma que eu desejar
 
 export default function AppFormCliente({ navigation }) {
   const [CPF, setCPF] = useState('');
@@ -92,7 +85,7 @@ container: {
     marginLeft: 10,
     marginRight: 10,
     weight: '35%',
-    padding: 50, //muda o tamanho da caixa marrom escura
+    padding: 50, 
     paddingBottom:400,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -117,14 +110,13 @@ container: {
   },
 
   caixatexto: {
-    marginTop: 10, //muda o espaço entre as caixas
-    height: 40, //muda a altura das caixas
+    marginTop: 10, 
+    height: 40, 
     backgroundColor: 'white',
-    borderRadius: 10, //muda a curva da borda
+    borderRadius: 10, 
     paddingHorizontal: 120,
     fontSize: 20,
     alignContent:'right',
-   // alignItems: 'stretch',
     borderColor: '#3B6659',
     borderWidth: 1,
   },
