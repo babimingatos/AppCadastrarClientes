@@ -1,35 +1,35 @@
 import {StatusBar} from 'expo-status-bar';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import AppItem from './AppListaItem';
- 
-const[items, setItems] = useState([
- 
-//A organização dos dados que virão do meu banco.
-  
-]);
- 
+import Database from './Database';
+
+export default function AppLista({route, navigation}){
+const[items, setItems] = useState([]);
+useEffect(() => {
+  Database.getItems().then(items => setItems(items));
+},
+[route]);
+
 return(
-  //estrutura lista
   <View style={styles.container}>
- 
+
   <StatusBar style="light"/>
-  //estrutura do formato de menu
   <Text style={styles.titulo} >Lista de Clientes</Text>
- 
+
   <ScrollView style={styles.scrollcontainer} contentContainerStyle={styles.itemscontainer}>
-//determina oq vai retornar do banco
   {
     items.map(item => {
       return <AppItem key={item.id} id={item.id} item={item.CPF, item.nome, item.email, item.cidade}/>
     })}
- 
+
  </ScrollView>
- 
+
   </View>
- 
+
 );
- 
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
- 
+
   scrollcontainer: {
     flex: 1,
     width: '90%',
   },
- 
+
   titulo: {
     color:'black',
     fontSize: 24,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 20,
   },
- 
+
   itemscontainer: {
     flex:1,
     marginTop: 10,
@@ -61,3 +61,4 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
 });
+
