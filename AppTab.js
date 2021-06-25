@@ -1,22 +1,22 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import AppFormCliente from './AppFormCliente';
-import AppFormServico from './AppFormServico';
+import AppLista from './AppLista'; //chama a tela de listagem dos dados cadastrados
+//import AppFormServico from './AppFormServico';
 
-const {Navigator, Screen} = createBottomTabNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
-
-function AppTab(){
-  return(
-      <NavigationContainer>
-
-        <Navigator tabBarOptions={{
-          style:{
+function AppTab() {
+  return (
+    <NavigationContainer>
+      <Navigator
+        tabBarOptions={{
+          style: {
             elevation: 0,
             shadowOpacity: 0,
-            height:60,
+            height: 60,
           },
 
           tabStyle: {
@@ -25,25 +25,34 @@ function AppTab(){
             justifyContent: 'center',
           },
 
-          labelStyle:{
+          labelStyle: {
             fontSize: 18,
-            marginLeft: 10, 
+            marginLeft: 10,
           },
 
-          inactiveBackgroundColor:'#9CE6DC',
-          activeBackgroundColor:'#27E6AE',
-          inactiveTintColor:'#696969',
-          activeTintColor:'#000000',
-
-        }}
-        >
-
-        <Screen name="Cliente" component={AppFormCliente}/>
-        <Screen name="Serviço" component={AppFormServico}/>
-        </Navigator>
-
-      </NavigationContainer>
-
+          inactiveBackgroundColor: '#9CE6DC',
+          activeBackgroundColor: '#27E6AE',
+          inactiveTintColor: '#696969',
+          activeTintColor: '#000000',
+        }}>
+        <Screen
+          name="AppFormCliente"
+          component={AppFormCliente}
+          //organizar tab
+          options={{
+            tabBarLabel: 'Clientes',
+          }}
+        />
+        <Screen
+          name="Listagem Clientes"
+          component={AppLista}
+          options={{
+            tabBarLabel: 'Lista de Clientes',
+          }}
+        />
+      </Navigator>
+    </NavigationContainer>
   );
 }
 export default AppTab;
+
