@@ -3,8 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import AppFormCliente from './AppFormCliente';
-import AppLista from './AppLista'; //chama a tela de listagem dos dados cadastrados
-//import AppFormServico from './AppFormServico';
+import AppLista from './AppLista';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
