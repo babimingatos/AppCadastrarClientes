@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     weight: '35%',
-    padding: 50, //muda o tamanho da caixa marrom escura
+    padding: 50, 
     paddingBottom:400,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -120,10 +120,10 @@ const styles = StyleSheet.create({
   },
 
   caixatexto: {
-    marginTop: 10, //muda o espaço entre as caixas
-    height: 40, //muda a altura das caixas
+    marginTop: 10, 
+    height: 40, 
     backgroundColor: 'white',
-    borderRadius: 20, //muda a curva da borda
+    borderRadius: 20, 
     paddingHorizontal: 100,
     fontSize: 20,
 
