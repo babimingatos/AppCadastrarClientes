@@ -1,29 +1,17 @@
-//import * as React from 'react';//Importação do React
-
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar'; //importação do componente gráfico Barra de Menu
+import { StatusBar } from 'expo-status-bar';
 import {
   Text,
   View,
   StyleSheet,
   TextInput,
   TouchableOpacity,
-} from 'react-native'; //Importação dos elementos de caixa de texto, View, Caixa de entrada e botão e CSS
-//O useState é um importação para trabalhar com mudanças de estado dos componentes gráficos.
+} from 'react-native'; 
 import Constants from 'expo-constants';
 
-// You can import from local files
-//import AssetExample from './components/AssetExample';
-
-// or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
 
-//O 2º Passo da programação é criar uma função:è um bloco de comandos que pode ser chamado em toda a minha programação.
-
-//handle é uma manipulador para que eu possa acessar as informações e modifica-las da forma que eu desejar
-
 export default function AppFormCliente({ navigation }) {
-  //Código 05/05/2021
   const [CPF, setCPF] = useState('');
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
