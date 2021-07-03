@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import AppFormCliente from './AppFormCliente';
-import AppLista from './AppLista';
+import AppLista from './AppLista'; 
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -37,7 +37,6 @@ function AppTab() {
         <Screen
           name="AppFormCliente"
           component={AppFormCliente}
-          //organizar tab
           options={{
             tabBarLabel: 'Clientes',
           }}
@@ -54,4 +53,3 @@ function AppTab() {
   );
 }
 export default AppTab;
-
