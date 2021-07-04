@@ -7,7 +7,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native'; 
-//Será adicionado uma nova importação que tem o objetivo de armazenar os dados localmente, ou seja, em um banco local
 import Constants from 'expo-constants';
 
 import { Card } from 'react-native-paper';
@@ -15,20 +14,8 @@ import { Card } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
 import Database from './Database';
 
-//função:è um bloco de comandos que pode ser chamado em toda a minha programação.
-
-//handle é uma manipulador para que eu possa acessar as informações e modifica-las da forma que eu desejar
-
-//criação da ação dos botoes
-
-//para editar e excluir ter açao é necessário os manipuladores Handle para pegar o id do dado selecionado e comparar com o banco para finalmente gerar a açaõ de editar e excluir
-
-//editar: os dados retornarão para o formulario
-
-//excluir: é necessario confirmar com o suer atravez de duas opçoes de botão
 export default function AppFormCliente({ route, navigation }) {
   const id = route.params ? route.params.id : undefined;
- //Esta variável é responsável por receber o campo identificador quando o usuário clica na opção de editar, os dados são recebidos pelo formulário do cliente.
   const [CPF, setCPF] = useState('');
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
@@ -45,26 +32,6 @@ export default function AppFormCliente({ route, navigation }) {
     setCPF(CPF);
   }
 
-  /*/async function handleButtonPress(){
-  console.log({id: new Date().getTime(),CPF, nome, email, cidade});
-  navigation.navigate("AppLista");
-
-  const listaItem = {id: new Date().getTime(),CPF:parseInt(CPF), nome, email, cidade};
-  let salvarItem = [];
-
-//Variável constante que sincroniza as informações para serem aramazenadas localmente.
-  const resposta = await AsyncStorage.getItem('items');
-//O if esta verificando através da variável resposta se houve uma sincronização das informações com o banco e em seguida indicando a variável que está com todas as informações nela (salvarItem) e recebendo o ojeto JSON que é responsável pela troca/envio de informações
-if(resposta) salvarItem = JSON.parse(resposta);
-//A variável salvarItem puxa as informações da variável listaItem
-  salvarItem.push(listaItem);
-
-//Nesta linha abaixo, os dados serão sincronizados com o banco realizando o cadastro, lembrando que o metodo acessor set é utilizado para que seja possível ter as suas informações modificadas no banco.
-  await AsyncStorage.setItem('items' , JSON.stringify(salvarItem));
-  navigation.navigate("AppLista", listaItem);
-}*/
-
-  //A função abaixo é responsável por ao clicar no botão cadastrar acionar o metódo criado no arquivo Database para que seja possível chamar a função salvarItem
   async function handleButtonPress() {
     const listaItem = { nome, email, cidade, CPF: parseInt(CPF) };
     Database.salvarItem(listaItem, id).then((response) =>
@@ -72,7 +39,7 @@ if(resposta) salvarItem = JSON.parse(resposta);
     );
   }
 
-  //neste código abaixo o useEffect está passando para as rotas como parâmetro as variáveis nome, email, cidade e CPF para serem alteradas através do metódo acessor Set e poderem levar as informações para a base de dados e/ou devolver para outra tela que no caso é AppLista
+ 
   useEffect(() => {
     if (!route.params) return;
     setCPF(route.params.CPF.toString);
@@ -81,7 +48,7 @@ if(resposta) salvarItem = JSON.parse(resposta);
     setCidade(route.params.cidade);
   }, [route]);
 
-  //Esta abaixo será para cadastrar as informações localmente ao pressionar o botão.
+  
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>CADASTRO DE CLIENTES</Text>
