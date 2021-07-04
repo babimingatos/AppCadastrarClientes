@@ -1,35 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'expo-status-bar'; //importação do componente gráfico Barra de Menu
+import { StatusBar } from 'expo-status-bar'; 
 import {
   Text,
   View,
   StyleSheet,
   TextInput,
   TouchableOpacity,
-} from 'react-native'; //import dos elementos de caixa de texto, view, caixa de entrada, botão e CSS
-//O useState é um importação para trabalhar com mudanças de estado dos componentes gráficos.
+} from 'react-native'; 
 import Constants from 'expo-constants';
 import { Card } from 'react-native-paper';
 
-//Será adicionado uma nova importação que tem o objetivo de armazenar os dados localmente, ou seja, em um banco local
+
 import AsyncStorage from '@react-native-community/async-storage';
 import Database from './Database';
 
-//função:è um bloco de comandos que pode ser chamado em toda a minha programação.
-
-//handle é uma manipulador para que eu possa acessar as informações e modifica-las da forma que eu desejar
-
 export default function AppFormCliente({ route, navigation }) {
   const id = route.params ? route.params.id : undefined;
-  //a variavel acima é responsável por receber o campo identificador quando o usuario clica na opc de editar. os dados sqao recebidos pelo form do cliente 
-
   const [CPF, setCPF] = useState('');
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [cidade, setCidade] = useState('');
 
   function handleDescriptionChange(nome, email, cidade) {
-    //setCPF(CPF); deixar em comentário por enquanto
     setNome(nome);
     setEmail(email);
     setCidade(cidade);
@@ -58,7 +50,6 @@ if(resposta) salvarItem = JSON.parse(resposta);
   navigation.navigate("AppLista", listaItem);
 }*/
 
-  //A função abaixo é responsável por ao clicar no botão cadastrar acionar o metódo criado no arquivo Database para que seja possível chamar a função salvarItem
   async function handleButtonPress() {
     const listaItem = { nome, email, cidade, CPF: parseInt(CPF) };
     Database.salvarItem(listaItem, id).then((response) =>
@@ -66,7 +57,6 @@ if(resposta) salvarItem = JSON.parse(resposta);
     );
   }
 
-  //neste código abaixo o useEffect está passando para as rotas como parâmetro as variáveis nome, email, cidade e CPF para serem alteradas através do metódo acessor Set e poderem levar as informações para a base de dados e/ou devolver para outra tela que no caso é AppLista
   useEffect(() => {
     if (!route.params) return;
     setCPF(route.params.CPF.toString);
@@ -75,8 +65,7 @@ if(resposta) salvarItem = JSON.parse(resposta);
     setCidade(route.params.cidade);
   }, [route]);
 
-  //Esta abaixo será para cadastrar as informações localmente ao pressionar o botão.
-  return (
+   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>CADASTRO DE CLIENTES</Text>
       <Text style={styles.titulo1}>*Preencha todos os dados</Text>
@@ -164,14 +153,13 @@ container: {
   },
 
   caixatexto: {
-    marginTop: 10, //muda o espaço entre as caixas
-    height: 40, //muda a altura das caixas
+    marginTop: 10, 
+    height: 40,
     backgroundColor: 'white',
-    borderRadius: 10, //muda a curva da borda
+    borderRadius: 10, 
     paddingHorizontal: 120,
     fontSize: 20,
     alignContent:'right',
-   // alignItems: 'stretch',
     borderColor: '#3B6659',
     borderWidth: 1,
   },
